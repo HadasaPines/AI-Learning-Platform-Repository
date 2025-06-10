@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\user1\Documents\תכנות\פרקטיקום\משימת מיון\‏‏תיקיה חדשה\venv
+set VIRTUAL_ENV=C:\Users\user1\Documents\Practicum\SortingTask\AI-Learning-Platform-Repository\AiLearningPlatform\venv
 
 if not defined PROMPT set PROMPT=$P$G
 

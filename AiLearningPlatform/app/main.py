@@ -1,8 +1,10 @@
 from fastapi import FastAPI
+from app.routers import userRouter
+from app.db.database import Base, engine
 
 app = FastAPI()
 
+# יצירת הטבלאות במסד הנתונים
+Base.metadata.create_all(bind=engine)
 
-@app.get("/")
-def root():
-    return {"message": "AI Learning Platform is running 🚀"}
+app.include_router(userRouter.router)
