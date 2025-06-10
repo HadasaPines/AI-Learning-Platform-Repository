@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import userRouter
+from app.routers import userRouter,categoryRouter
 from app.db.database import Base, engine
 
 app = FastAPI()
@@ -8,3 +8,4 @@ app = FastAPI()
 Base.metadata.create_all(bind=engine)
 
 app.include_router(userRouter.router)
+app.include_router(categoryRouter.router)
