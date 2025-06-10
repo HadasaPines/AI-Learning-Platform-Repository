@@ -24,3 +24,11 @@ def read_user(user_id: int, db: Session = Depends(get_db)):
 @router.get("/", response_model=list[schemas.UserInDB])
 def read_users(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
     return service.get_users(db, skip=skip, limit=limit)
+
+@router.put("/{user_id}", response_model=schemas.UserInDB)
+def update_user(user_id: int, user_update: schemas.UserUpdate, db: Session = Depends(get_db)):
+    return service.update_user(db, user_id, user_update)
+
+@router.delete("/{user_id}", response_model=dict)
+def delete_user(user_id: int, db: Session = Depends(get_db)):
+    return service.delete_user(db, user_id)
