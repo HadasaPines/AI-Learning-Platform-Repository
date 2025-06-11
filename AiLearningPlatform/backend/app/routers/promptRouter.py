@@ -4,6 +4,8 @@ from app.schemas import promptSchema as schemas
 from app.services import promptService as service
 from app.db.database import SessionLocal
 import asyncio
+from typing import List
+
 
 router = APIRouter(prefix="/prompts", tags=["prompts"])
 
@@ -34,3 +36,7 @@ def update_prompt(prompt_id: int, prompt_update: schemas.PromptUpdate, db: Sessi
 @router.delete("/{prompt_id}", response_model=dict)
 def delete_prompt(prompt_id: int, db: Session = Depends(get_db)):
     return service.delete_prompt(db, prompt_id)
+
+@router.get("/user/{user_id}", response_model=List[schemas.PromptWithCategory])
+def get_prompts_by_user(user_id: int, skip: int = 0, limit: int = 20, db: Session = Depends(get_db)):
+    return service.get_prompts_by_user(db, user_id, skip=skip, limit=limit)

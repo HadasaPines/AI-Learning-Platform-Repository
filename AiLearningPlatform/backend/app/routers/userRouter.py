@@ -39,3 +39,5 @@ def update_user(user_id: int, user_update: schemas.UserUpdate, db: Session = Dep
 @router.delete("/{user_id}", response_model=dict)
 def delete_user(user_id: int, db: Session = Depends(get_db)):
     return service.delete_user(db, user_id)
+
+

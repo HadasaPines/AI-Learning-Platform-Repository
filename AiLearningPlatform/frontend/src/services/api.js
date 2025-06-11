@@ -34,3 +34,12 @@ export const submitPrompt = async (data) => {
   }
 };
 
+export const getUserPrompts = async (userId) => {
+  try {
+    const response = await API.get(`/prompts/user/${userId}`);
+    return response.data;
+  } catch (error) {
+    console.error("Failed to fetch prompts", error);
+    throw error;
+  }
+};

@@ -51,3 +51,9 @@ def delete_prompt(db: Session, prompt_id: int):
     db.delete(db_prompt)
     db.commit()
     return {"detail": "Prompt deleted successfully"}
+
+def get_prompts_by_user(db: Session, user_id: int, skip: int = 0, limit: int = 20):
+    prompts = db.query(Prompt).filter(Prompt.user_id == user_id).offset(skip).limit(limit).all()
+    if not prompts:
+        raise HTTPException(status_code=404, detail="No prompts found for this user")
+    return prompts
