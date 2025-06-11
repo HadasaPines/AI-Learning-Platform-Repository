@@ -18,8 +18,10 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     return service.create_user(db, user)
 
 @router.post("/login", response_model=schemas.UserInDB)
-def login_user(phone: str, db: Session = Depends(get_db)):
-    return service.login_user(db, phone)
+def login_user(payload: schemas.LoginRequest, db: Session = Depends(get_db)):
+    print("Login endpoint hit with:", payload)
+
+    return service.login_user(db, payload.phone)
 
 
 @router.get("/{user_id}", response_model=schemas.UserInDB)

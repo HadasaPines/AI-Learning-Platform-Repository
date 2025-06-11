@@ -12,6 +12,10 @@ class UserCreate(UserBase):
 class UserUpdate(BaseModel):
     name: Optional[str] = None
     phone: Optional[str] = None
+    
+class LoginRequest(BaseModel):
+    name: str
+    phone: str
 
 class UserInDB(UserBase):
     id: int

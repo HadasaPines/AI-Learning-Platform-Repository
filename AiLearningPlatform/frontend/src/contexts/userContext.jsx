@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { loginUser } from "../services/api"; 
 
 const UserContext = createContext(null);
 
@@ -13,13 +14,23 @@ export const UserProvider = ({ children }) => {
     setUser(userData);
   };
 
+  const loginWithApi = async (name, phone) => {
+    try {
+      const userData = await loginUser(name, phone);
+      login(userData);
+      return { success: true };
+    } catch (error) {
+      return { success: false, message: error.message };
+    }
+  };
+
   const logout = () => {
     localStorage.removeItem("user");
     setUser(null);
   };
 
   return (
-    <UserContext.Provider value={{ user, login, logout }}>
+    <UserContext.Provider value={{ user, login, loginWithApi, logout }}>
       {children}
     </UserContext.Provider>
   );
