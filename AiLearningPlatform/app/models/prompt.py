@@ -11,7 +11,7 @@ class Prompt(Base):
     sub_category_id = Column(Integer, ForeignKey("sub_categories.id"), nullable=False)
     prompt = Column(Text, nullable=False)
     response = Column(Text, nullable=False)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.now)
 
     user = relationship("User", back_populates="prompts")
     category = relationship("Category", back_populates="prompts")
