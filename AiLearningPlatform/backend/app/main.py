@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import userRouter,categoryRouter,subCategoryRouter, promptRouter
+from app.routers import userRouter,categoryRouter,subCategoryRouter, promptRouter,adminRouter
 from app.db.database import Base, engine
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -20,3 +20,5 @@ app.include_router(userRouter.router)
 app.include_router(categoryRouter.router)
 app.include_router(subCategoryRouter.router)
 app.include_router(promptRouter.router)
+app.include_router(adminRouter.router)
+

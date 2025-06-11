@@ -2,6 +2,8 @@ from pydantic import BaseModel
 from typing import Optional
 from datetime import datetime
 from .categorySchema import CategoryRead, SubCategoryRead
+from app.schemas.userSchema import UserInDB
+
 
 
 class PromptBase(BaseModel):
@@ -32,6 +34,12 @@ class PromptWithCategory(PromptBase):
 class PromptInDB(PromptBase):
     id: int
     created_at: datetime 
+
+    class Config:
+        from_attributes = True
+
+class PromptWithUser(PromptInDB):
+    user: UserInDB  
 
     class Config:
         from_attributes = True

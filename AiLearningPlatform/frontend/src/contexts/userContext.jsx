@@ -8,9 +8,12 @@ export const UserProvider = ({ children }) => {
     const saved = localStorage.getItem("user");
     return saved ? JSON.parse(saved) : null;
   });
-
   const login = (userData) => {
+    const isAdmin = userData.name === "admin" || userData.is_admin === true;
+  
     localStorage.setItem("user", JSON.stringify(userData));
+    localStorage.setItem("is_admin", isAdmin ? "true" : "false");
+  
     setUser(userData);
   };
 

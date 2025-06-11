@@ -43,3 +43,5 @@ export const getUserPrompts = async (userId) => {
     throw error;
   }
 };
+export const getAllUsers = () => API.get("/admin/users");
+export const getAllPrompts = () => API.get("/admin/prompts");

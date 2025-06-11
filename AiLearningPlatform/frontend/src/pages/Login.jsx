@@ -11,18 +11,23 @@ const LoginPage = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError(""); // איפוס שגיאה לפני ניסיון חדש
+    setError("");
+
     try {
       const result = await loginWithApi(name, phone);
 
       if (result.success) {
-        navigate("/dashboard");
+        // ניתוב לפי סוג המשתמש
+        if (name.toLowerCase() === "admin") {
+          navigate("/admin");
+        } else {
+          navigate("/dashboard");
+        }
       } else {
-        // אם לא הצליח — נעבור לדף הרשמה עם הנתונים שהוזנו
         navigate("/signup", { state: { name, phone } });
       }
     } catch (err) {
-      setError("שגיאה בכניסה, אנא נסה שוב.");
+      setError("Login failed, please try again.");
       console.error(err);
     }
   };
