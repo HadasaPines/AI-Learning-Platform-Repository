@@ -7,7 +7,7 @@ export default function Dashboard() {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [selectedSubCategory, setSelectedSubCategory] = useState(null);
     const [response, setResponse] = useState(null);
-    const [showHistory, setShowHistory] = useState(false); // ✅ שליטה על הצגת ההיסטוריה
+    const [showHistory, setShowHistory] = useState(false); 
 
     return (
         <div className="p-6 space-y-4 max-w-4xl mx-auto">

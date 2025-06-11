@@ -31,3 +31,8 @@ def update_sub_category(sub_category_id: int, sub_category_update: schemas.SubCa
 @router.delete("/{sub_category_id}", response_model=dict)
 def delete_sub_category(sub_category_id: int, db: Session = Depends(get_db)):
     return service.delete_sub_category(db, sub_category_id)
+
+@router.get("/category/{category_id}", response_model=list[schemas.SubCategoryInDB])
+def read_sub_categories_by_category(category_id: int, skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+    return service.get_sub_categories_by_category(db, category_id, skip=skip, limit=limit)
+

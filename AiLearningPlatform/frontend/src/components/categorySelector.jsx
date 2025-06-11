@@ -28,10 +28,12 @@ export default function CategorySelector({
       setSelectedSubCategory(null);
       return;
     }
-
+  
     const fetchSubCategories = async () => {
       try {
+        console.log("Fetching subcategories for category:", selectedCategory.id);
         const { data } = await getSubCategories(selectedCategory.id);
+        console.log("Subcategories received:", data);
         setSubCategories(data);
       } catch (err) {
         console.error("Failed to load sub-categories", err);

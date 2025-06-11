@@ -43,3 +43,9 @@ def delete_sub_category(db: Session, sub_category_id: int):
     db.delete(sub_category)
     db.commit()
     return {"detail": "Sub-category deleted successfully"}
+
+def get_sub_categories_by_category(db: Session, category_id: int, skip: int = 0, limit: int = 10):
+    sub_categories = db.query(SubCategory).filter(SubCategory.category_id == category_id).offset(skip).limit(limit).all()
+    if not sub_categories:
+        raise HTTPException(status_code=404, detail="No sub-categories found for this category")
+    return sub_categories

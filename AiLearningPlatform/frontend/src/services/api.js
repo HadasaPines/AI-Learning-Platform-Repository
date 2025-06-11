@@ -22,7 +22,7 @@ export const loginUser = async (name, phone) => {
 
 export const getCategories = () => API.get("/categories/");
 export const getSubCategories = (categoryId) =>
-  API.get(`/subcategories`, { params: { category_id: categoryId } });
+  API.get(`subcategories/category/${categoryId}`);
 
 export const submitPrompt = async (data) => {
   try {

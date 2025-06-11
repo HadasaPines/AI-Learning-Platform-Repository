@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../contexts/userContext";
-
+import "../css/login.css"; 
 const LoginPage = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -33,7 +33,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "auto" }}>
+    <div className="login-container">
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <div>
