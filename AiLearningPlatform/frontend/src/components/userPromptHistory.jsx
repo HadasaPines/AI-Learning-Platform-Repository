@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getUserPrompts } from "../services/api";
+import "../css/userPromptHistory.css"; 
 
 const UserPromptHistory = () => {
     const [prompts, setPrompts] = useState([]);
@@ -28,31 +29,32 @@ const UserPromptHistory = () => {
     if (!prompts.length) return <p>No prompts found.</p>;
 
     return (
-        <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Prompt History</h2>
-            <ul className="space-y-2">
-                {prompts.map((item) => (
-                    <li key={item.id} className="border p-3 rounded shadow-sm">
-                        <div>
-                            <strong>Prompt:</strong> {item.prompt}
-                        </div>
-                        <div>
-                            <strong>Response:</strong> {item.response || <em>No response</em>}
-                        </div>
-                        <div className="text-sm text-gray-500">
-                            <strong>Date:</strong> {new Date(item.created_at).toLocaleString()}
-                        </div>
-                        <div>
-                            <strong>Category:</strong> {item.category?.name || <em>Unknown</em>}
-                        </div>
-                        <div>
-                            <strong>Sub-Category:</strong> {item.sub_category?.name || <em>None</em>}
-                        </div>
-                    </li>
-                ))}
-            </ul>
+        <div className="prompt-history-container">
+          <h2 className="prompt-history-title">Prompt History</h2>
+          <ul className="prompt-history-list">
+            {prompts.map((item) => (
+              <li key={item.id} className="prompt-history-item">
+                <div>
+                  <strong>Prompt:</strong> {item.prompt}
+                </div>
+                <div>
+                  <strong>Response:</strong> {item.response || <em>No response</em>}
+                </div>
+                <div className="date">
+                  <strong>Date:</strong> {new Date(item.created_at).toLocaleString()}
+                </div>
+                <div>
+                  <strong>Category:</strong> {item.category?.name || <em>Unknown</em>}
+                </div>
+                <div>
+                  <strong>Sub-Category:</strong> {item.sub_category?.name || <em>None</em>}
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
-    );
+      );
+    
 };
 
 export default UserPromptHistory;

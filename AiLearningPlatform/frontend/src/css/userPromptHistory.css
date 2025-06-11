@@ -1,0 +1,44 @@
+.prompt-history-container {
+    margin-top: 2rem;
+  }
+  
+  .prompt-history-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #2d3748;
+  }
+  
+  .prompt-history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .prompt-history-item {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: #f9fafb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .prompt-history-item + .prompt-history-item {
+    margin-top: 1rem;
+  }
+  
+  .prompt-history-item strong {
+    color: #1a202c;
+  }
+  
+  .prompt-history-item em {
+    color: #718096;
+    font-style: italic;
+  }
+  
+  .prompt-history-item .date {
+    font-size: 0.875rem;
+    color: #718096;
+    margin-top: 0.5rem;
+  }
+  

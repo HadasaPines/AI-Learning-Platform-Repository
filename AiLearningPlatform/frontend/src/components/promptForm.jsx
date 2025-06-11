@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { submitPrompt } from "../services/api";
+import "../css/promptForm.css";
 
 const PromptForm = ({ category, subCategory, onResponse }) => {
   const [promptText, setPromptText] = useState("");
   const [loading, setLoading] = useState(false);
-  const [responseText, setResponseText] = useState(""); // חדש
+  const [responseText, setResponseText] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,12 +27,10 @@ const PromptForm = ({ category, subCategory, onResponse }) => {
         sub_category_id: subCategory?.id ? Number(subCategory.id) : null,
       };
 
-      console.log("Submitting prompt:", data);
-
       const response = await submitPrompt(data);
 
       onResponse(response);
-      setResponseText(response?.response || "No response received"); 
+      setResponseText(response?.response || "No response received");
       setPromptText("");
     } catch (error) {
       console.error("Error submitting prompt", error);
@@ -42,29 +41,33 @@ const PromptForm = ({ category, subCategory, onResponse }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <textarea
-        className="w-full border p-2 rounded"
-        placeholder="Enter a question or topic"
-        value={promptText}
-        onChange={(e) => setPromptText(e.target.value)}
-        required
-      />
-      <button
-        type="submit"
-        className="bg-blue-500 text-white py-2 px-4 rounded"
-        disabled={loading}
-      >
-        {loading ? "Sending..." : "Submit"}
-      </button>
+    <div className="prompt-form-container">
+      <form onSubmit={handleSubmit} className="form">
+        <textarea
+          placeholder="Enter a question or topic"
+          value={promptText}
+          onChange={(e) => setPromptText(e.target.value)}
+          required
+          rows={4}
+          className="textarea"
+        />
 
-      {responseText && (
-        <div className="bg-gray-100 p-4 rounded border">
-          <h3 className="font-bold mb-2">AI Response:</h3>
-          <p>{responseText}</p>
-        </div>
-      )}
-    </form>
+        <button
+          type="submit"
+          disabled={loading}
+          className="submit-button"
+        >
+          {loading ? "Sending..." : "Submit"}
+        </button>
+
+        {responseText && (
+          <div className="response-box">
+            <h3 className="response-title">AI Response:</h3>
+            <p className="response-text">{responseText}</p>
+          </div>
+        )}
+      </form>
+    </div>
   );
 };
 

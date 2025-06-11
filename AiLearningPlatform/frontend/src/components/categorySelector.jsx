@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getCategories, getSubCategories } from "../services/api.js";
+import "../css/categorySelector.css"; 
+
 
 export default function CategorySelector({
   selectedCategory,
@@ -55,7 +57,7 @@ export default function CategorySelector({
   };
 
   return (
-    <div className="space-y-4">
+    <div className="category-selector">
       <div>
         <label className="block font-medium">Choose Category:</label>
         <select

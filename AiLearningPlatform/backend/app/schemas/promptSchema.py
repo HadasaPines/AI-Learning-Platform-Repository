@@ -40,6 +40,9 @@ class PromptInDB(PromptBase):
 
 class PromptWithUser(PromptInDB):
     user: UserInDB  
+    created_at: datetime
+    category: CategoryRead
+    sub_category: Optional[SubCategoryRead] = None
 
     class Config:
         from_attributes = True

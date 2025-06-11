@@ -3,10 +3,20 @@ body, html {
     height: 100%;
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
+
+    /* רקע בגווני סגול עם מעבר עדין */
+    background: linear-gradient(135deg, #6a11cb 0%, #8e54e9 40%, #a066e0 70%, #b185f5 100%);
+    background-attachment: fixed;
+    background-size: cover;
+
+    /* פריסה מרכזית */
     display: flex;
     justify-content: center;
     align-items: center;
+
+    /* אפקט טשטוש עם צבע אחורי */
+    position: relative;
+    overflow: hidden;
   }
   
   .login-container {
@@ -51,7 +61,7 @@ body, html {
   }
   
   .login-container button {
-    width: 100%;       
+    width: 108%;       
     padding: 0.7rem;
     margin-top: 1.2rem;   
     background: #6a11cb;

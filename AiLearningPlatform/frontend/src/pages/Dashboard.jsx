@@ -2,42 +2,49 @@ import React, { useState } from 'react';
 import CategorySelector from '../components/categorySelector';
 import PromptForm from '../components/promptForm';
 import UserPromptHistory from '../components/userPromptHistory';
+import '../css/dashboard.css';
 
 export default function Dashboard() {
-    const [selectedCategory, setSelectedCategory] = useState(null);
-    const [selectedSubCategory, setSelectedSubCategory] = useState(null);
-    const [response, setResponse] = useState(null);
-    const [showHistory, setShowHistory] = useState(false); 
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedSubCategory, setSelectedSubCategory] = useState(null);
+  const [response, setResponse] = useState(null);
+  const [showHistory, setShowHistory] = useState(false);
 
-    return (
-        <div className="p-6 space-y-4 max-w-4xl mx-auto">
-            <h1 className="text-2xl font-bold">AI Learning Dashboard</h1>
+  return (
+    <div className="dashboard-container space-y-8 p-6 max-w-3xl mx-auto">
+      <h1 className="dashboard-title text-3xl font-bold text-center mb-6">AI Learning Dashboard</h1>
 
-            <CategorySelector
-                selectedCategory={selectedCategory}
-                setSelectedCategory={setSelectedCategory}
-                selectedSubCategory={selectedSubCategory}
-                setSelectedSubCategory={setSelectedSubCategory}
-            />
+      <section className="category-selector-section">
+        <CategorySelector
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          selectedSubCategory={selectedSubCategory}
+          setSelectedSubCategory={setSelectedSubCategory}
+        />
+      </section>
 
-            <PromptForm
-                category={selectedCategory}
-                subCategory={selectedSubCategory}
-                onResponse={(res) => {
-                    setResponse(res);
-                }}
-            />
+      <section className="prompt-form-section">
+        <PromptForm
+          category={selectedCategory}
+          subCategory={selectedSubCategory}
+          onResponse={(res) => setResponse(res)}
+        />
+      </section>
 
-            
-            <button
-                onClick={() => setShowHistory(!showHistory)}
-                className="bg-gray-200 px-4 py-2 rounded border"
-            >
-                {showHistory ? "Hide History" : "Show History"}
-            </button>
+      <div className="text-center">
+        <button
+          onClick={() => setShowHistory(!showHistory)}
+          className="history-toggle-button"
+        >
+          {showHistory ? "Hide History" : "Show History"}
+        </button>
+      </div>
 
-            
-            {showHistory && <UserPromptHistory />}
-        </div>
-    );
+      {showHistory && (
+        <section className="user-prompt-history-section mt-8">
+          <UserPromptHistory />
+        </section>
+      )}
+    </div>
+  );
 }

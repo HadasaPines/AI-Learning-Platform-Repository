@@ -1,0 +1,23 @@
+.category-selector label {
+    color: #5a3eaa;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  .category-selector select {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    font-size: 1rem;
+    border: 2px solid #b19cd9;
+    border-radius: 8px;
+    background-color: #f9f6ff;
+    transition: border-color 0.3s ease;
+  }
+  
+  .category-selector select:focus {
+    outline: none;
+    border-color: #6a11cb;
+    box-shadow: 0 0 6px #6a11cb66;
+  }
+  

@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../contexts/userContext";
-import "../css/login.css"; 
+import "../css/login.css";
 const LoginPage = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -33,31 +33,41 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Name:</label>
-          <input
-            type="text"
-            value={name}
-            required
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Phone:</label>
-          <input
-            type="text"
-            value={phone}
-            required
-            onChange={(e) => setPhone(e.target.value)}
-          />
-        </div>
-        <button type="submit">Login</button>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-      </form>
+    <div className="login-page">
+      <img src="/images/ai-learning-logo.png" alt="AI Learning Logo" className="logo" />
+
+      <div className="login-header">
+        <h1>Welcome To AI Learning Platform</h1>
+        <p>Login to continue</p>
+      </div>
+      <div className="login-container">
+        <h2>Login</h2>
+        <form onSubmit={handleLogin}>
+          <div>
+            <label>Name:</label>
+            <input
+              type="text"
+              value={name}
+              required
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div>
+            <label>Phone:</label>
+            <input
+              type="text"
+              value={phone}
+              required
+              onChange={(e) => setPhone(e.target.value)}
+            />
+          </div>
+          <button type="submit">Login</button>
+          {error && <p style={{ color: "red" }}>{error}</p>}
+        </form>
+      </div>
     </div>
+
+
   );
 };
 
