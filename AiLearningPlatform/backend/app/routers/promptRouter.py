@@ -14,10 +14,9 @@ def get_db():
     finally:
         db.close()
 
-
 @router.post("/", response_model=schemas.PromptInDB)
 def create_prompt(prompt: schemas.PromptCreate, db: Session = Depends(get_db)):
-    return service.create_prompt(db, prompt)
+    return service.create_prompt(db, prompt, ai_response="")
 
 
 @router.get("/{prompt_id}", response_model=schemas.PromptInDB)

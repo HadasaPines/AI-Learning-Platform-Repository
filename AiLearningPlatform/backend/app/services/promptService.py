@@ -4,7 +4,7 @@ from fastapi import HTTPException
 from app.models.prompt import Prompt
 from app.schemas.promptSchema import PromptCreate, PromptUpdate
 
-def create_prompt(db: Session, prompt: PromptCreate, ai_response: str):
+def create_prompt(db: Session, prompt: PromptCreate, ai_response: str=""):
     db_prompt = Prompt(
         user_id=prompt.user_id,
         category_id=prompt.category_id,

@@ -1,48 +1,47 @@
-import React, { useEffect, useState } from "react";
 
-function Dashboard() {
-  const [history, setHistory] = useState([]);
+import React, { useState, useEffect } from 'react';
+import CategorySelector from '../components/categorySelector';
+import PromptForm from '../components/promptForm';
+// import ResponseViewer from '../components/ResponseViewer';
+// import HistoryList from '../components/HistoryList';
 
-  // כאן אפשר לטעון את היסטוריית השיעורים (בפועל תחליף לקריאה ל-API)
-  useEffect(() => {
-    // דוגמה לנתונים סטטיים - יש להחליף ב-fetch או axios בעתיד
-    const savedHistory = [
-      { id: 1, topic: "למידת מכונה בסיסית", date: "2025-06-10" },
-      { id: 2, topic: "רשתות נוירונים", date: "2025-06-11" },
-    ];
-    setHistory(savedHistory);
-  }, []);
+export default function Dashboard() {
+    const [selectedCategory, setSelectedCategory] = useState(null);
+    const [selectedSubCategory, setSelectedSubCategory] = useState(null);
+    const [response, setResponse] = useState(null);
+    const [history, setHistory] = useState([]);
 
-  return (
-    <div style={{ padding: "1rem" }}>
-      <h1>דשבורד למידה</h1>
+    //   const fetchHistory = async () => {
+    //     const res = await fetch(`/api/prompts/user`);
+    //     const data = await res.json();
+    //     setHistory(data);
+    //   };
 
-      <section>
-        <h2>היסטוריית שיעורים</h2>
-        {history.length === 0 ? (
-          <p>אין היסטוריה להצגה.</p>
-        ) : (
-          <ul>
-            {history.map((item) => (
-              <li key={item.id}>
-                {item.topic} - {item.date}
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
+    //   useEffect(() => {
+    //     fetchHistory();
+    //   }, []);
 
-      <section style={{ marginTop: "2rem" }}>
-        <h2>התחל שיעור חדש</h2>
-        <button
-          onClick={() => alert("כאן תוכל ליישם התחלת שיעור חדש")}
-          style={{ padding: "0.5rem 1rem", fontSize: "1rem" }}
-        >
-          התחלת שיעור
-        </button>
-      </section>
-    </div>
-  );
+    return (
+        <div className="p-6 space-y-4 max-w-4xl mx-auto">
+            <h1 className="text-2xl font-bold">AI Learning Dashboard</h1>
+            <CategorySelector
+                selectedCategory={selectedCategory}
+                setSelectedCategory={setSelectedCategory}
+                selectedSubCategory={selectedSubCategory}
+                setSelectedSubCategory={setSelectedSubCategory}
+            />
+            <PromptForm
+                category={selectedCategory}
+                subCategory={selectedSubCategory}
+                onResponse={(res) => {
+                    setResponse(res);
+                   // fetchHistory(); 
+                }}
+            />
+
+
+            {/* {response && <ResponseViewer response={response} />}
+      <HistoryList history={history} /> */}
+        </div>
+    );
 }
-
-export default Dashboard;
