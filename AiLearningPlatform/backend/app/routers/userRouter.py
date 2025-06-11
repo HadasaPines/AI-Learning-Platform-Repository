@@ -17,6 +17,11 @@ def get_db():
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     return service.create_user(db, user)
 
+@router.post("/login", response_model=schemas.UserInDB)
+def login_user(phone: str, db: Session = Depends(get_db)):
+    return service.login_user(db, phone)
+
+
 @router.get("/{user_id}", response_model=schemas.UserInDB)
 def read_user(user_id: int, db: Session = Depends(get_db)):
     return service.get_user(db, user_id)

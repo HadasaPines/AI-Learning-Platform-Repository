@@ -43,3 +43,11 @@ def delete_user(db: Session, user_id: int):
     db.delete(user)
     db.commit()
     return {"detail": "User deleted successfully"}
+def login_user(db: Session, phone: str):
+    user = db.query(User).filter(User.phone == phone).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    
+    # Here you would typically verify the password, but since we don't have it in this example,
+    # we will assume the login is successful if the user exists.
+    return {"message": "Login successful", "user_id": user.id}
