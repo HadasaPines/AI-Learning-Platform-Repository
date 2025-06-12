@@ -32,13 +32,13 @@
   }
   
   .prompt-history-item em {
-    color: #718096;
+    color: #000000;
     font-style: italic;
   }
   
   .prompt-history-item .date {
     font-size: 0.875rem;
-    color: #718096;
+    color: #000000;
     margin-top: 0.5rem;
   }
   html, body {
@@ -48,5 +48,10 @@
   padding: 0;
   overflow-x: hidden;
   overflow-y: auto;  
+}
+
+
+.prompt-history-item * {
+  color: #000000 !important; 
 }
   

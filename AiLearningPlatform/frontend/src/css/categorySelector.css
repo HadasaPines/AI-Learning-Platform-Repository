@@ -11,7 +11,7 @@
     font-size: 1rem;
     border: 2px solid #b19cd9;
     border-radius: 8px;
-    background-color: #f9f6ff;
+    background: linear-gradient(135deg, #e5dbff, #f8f4ff);
     transition: border-color 0.3s ease;
   }
   

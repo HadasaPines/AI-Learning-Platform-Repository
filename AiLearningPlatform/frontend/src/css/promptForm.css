@@ -25,7 +25,7 @@ select {
     font-size: 1rem;
     border: 2px solid #b19cd9;
     border-radius: 8px;
-    background-color: #f9f6ff;
+    background: linear-gradient(135deg, #e5dbff, #f8f4ff);
     transition: border-color 0.3s ease;
     font-family: inherit;
     resize: vertical;
@@ -40,8 +40,7 @@ select:focus {
 
 .submit-button {
     padding: 0.8rem 1.5rem;
-    background-color: #6a11cb;
-    color: white;
+    background: linear-gradient(135deg, #e5dbff, #f8f4ff);
     font-weight: bold;
     font-size: 1.1rem;
     border: none;
@@ -52,8 +51,7 @@ select:focus {
 }
 
 .submit-button:hover {
-    background-color: #4a2a8c;
-    color: white;
+    color: #8667c5;
 }
 
 .submit-button:disabled {

@@ -2,7 +2,7 @@
     max-width: 1000px;
     margin: 2rem auto;
     padding: 3rem;
-    background: linear-gradient(to bottom right, #e5e3e8, #fcfbff);
+    background: linear-gradient(135deg, #e5dbff, #f8f4ff) !important;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     color: white;
@@ -26,8 +26,8 @@
   
 
   button {
-    background-color: #ffffff;
-    color: #6a11cb;
+    background: linear-gradient(135deg, #e5dbff, #f8f4ff);
+        color: #6a11cb;
     font-weight: bold;
     padding: 0.6rem 1.2rem;
     border: none;

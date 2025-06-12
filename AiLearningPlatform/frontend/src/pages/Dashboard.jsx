@@ -11,8 +11,8 @@ export default function Dashboard() {
   const [showHistory, setShowHistory] = useState(false);
 
   return (
-    <div className="dashboard-container space-y-8 p-6 max-w-3xl mx-auto">
-      <h1 className="dashboard-title text-3xl font-bold text-center mb-6">AI Learning Dashboard</h1>
+    <div className="dashboard-container">
+      <h1 className="dashboard-title ">AI Learning Dashboard</h1>
 
       <section className="category-selector-section">
         <CategorySelector
