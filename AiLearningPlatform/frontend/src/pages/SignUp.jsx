@@ -19,22 +19,12 @@ const SignUp = () => {
       login(response.data);
       navigate("/dashboard");
     } catch (err) {
-      setError(err.response?.data?.detail || "Registration failed");
+      setError(err.message || "Registration failed");
     }
   };
 
   return (
-    <div style={{
-      height: "100vh",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      background: "linear-gradient(135deg, #6a11cb 0%, #8e54e9 40%, #a066e0 70%, #b185f5 100%)",
-      backgroundAttachment: "fixed",
-      backgroundSize: "cover",
-      fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-      margin: 0,
-    }}>
+    <div className="full-screen-center">
       <div className="login-container">
         <h2>Sign Up</h2>
         <form onSubmit={handleSubmit}>
@@ -58,7 +48,7 @@ const SignUp = () => {
               required
             />
           </div>
-          {error && <p>{error}</p>}
+          {error && <p style={{ color: "black" }}>{error}</p>}
           <button type="submit">Register</button>
         </form>
       </div>

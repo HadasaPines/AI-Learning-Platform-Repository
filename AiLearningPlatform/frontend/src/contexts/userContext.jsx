@@ -17,16 +17,18 @@ export const UserProvider = ({ children }) => {
     setUser(userData);
   };
 
-  const loginWithApi = async (name, phone) => {
-    try {
-      const userData = await loginUser(name, phone);
-      login(userData);
-      return { success: true };
-    } catch (error) {
-      return { success: false, message: error.message };
+ const loginWithApi = async (name, phone) => {
+  try {
+    const userData = await loginUser(name, phone);
+    login(userData);
+    return { success: true };
+  } catch (error) {
+    if (error.message.includes("לא נמצא")) {
+      return { success: false, reason: "not_found" };
     }
-  };
-
+    throw error;
+  }
+};
   const logout = () => {
     localStorage.removeItem("user");
     setUser(null);

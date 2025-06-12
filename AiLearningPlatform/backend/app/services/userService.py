@@ -7,7 +7,7 @@ from app.schemas.userSchema import UserCreate, UserUpdate, LoginRequest
 def create_user(db: Session, user: UserCreate):
     existing_user = db.query(User).filter(User.phone == user.phone).first()
     if existing_user:
-        raise HTTPException(status_code=400, detail="Phone number already registered")
+        raise HTTPException(status_code=409, detail="Phone number already registered")
     
     db_user = User(name=user.name, phone=user.phone)
     db.add(db_user)

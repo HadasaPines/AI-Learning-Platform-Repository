@@ -12,27 +12,27 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
-
+  
     try {
       const result = await loginWithApi(name, phone);
-
+  
       if (result.success) {
         if (name.toLowerCase() === "admin") {
           navigate("/admin");
         } else {
           navigate("/dashboard");
         }
-      } else {
+      } else if (result.reason === "not_found") {
         navigate("/signup", { state: { name, phone } });
       }
     } catch (err) {
-      setError("Login failed, please try again.");
+      setError(err.message || "Unknown error while connecting");
       console.error(err);
     }
   };
-
+  
   return (
-    <div className="login-page">
+    <div className="full-screen-center">
       <div className="login-background">
       <div className="login-header">
         <h1>Welcome To AI Learning Platform</h1>
@@ -59,8 +59,8 @@ const LoginPage = () => {
               onChange={(e) => setPhone(e.target.value)}
             />
           </div>
+          {error && <p style={{ color: "black" }}>{error}</p>}
           <button type="submit">Login</button>
-          {error && <p style={{ color: "red" }}>{error}</p>}
         </form>
       </div>
     </div>

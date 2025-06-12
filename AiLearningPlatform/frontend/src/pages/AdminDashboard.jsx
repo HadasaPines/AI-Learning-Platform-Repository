@@ -6,8 +6,6 @@ export default function AdminDashboard() {
   const [users, setUsers] = useState([]);
   const [prompts, setPrompts] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  const [showUsers, setShowUsers] = useState(true);
   const [showPrompts, setShowPrompts] = useState(true);
 
   useEffect(() => {

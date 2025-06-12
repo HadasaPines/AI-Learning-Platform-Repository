@@ -1,14 +1,14 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Optional
 
 class CategoryBase(BaseModel):
-    name: str
-   
+    name: str = Field(..., min_length=2, max_length=50, description="Category name")
+
 class CategoryCreate(CategoryBase):
     pass
 
 class CategoryUpdate(BaseModel):
-    name: Optional[str] = None
+    name: Optional[str] = Field(None, min_length=2, max_length=50)
 
 class CategoryRead(BaseModel):
     id: int
@@ -22,9 +22,9 @@ class SubCategoryRead(BaseModel):
     name: str
     category_id: int
 
-class Config:
-        from_attributes = True   
-        
+    class Config:
+        from_attributes = True
+
 class CategoryInDB(CategoryBase):
     id: int
 

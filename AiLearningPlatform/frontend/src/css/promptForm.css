@@ -60,7 +60,7 @@ select:focus {
 }
 
 .response-box {
-    background-color: #f9f9ff;
+    background: linear-gradient(135deg, #e5dbff, #f8f4ff);
     border: 1px solid #ddd;
     padding: 1rem;
     border-radius: 6px;
@@ -69,9 +69,10 @@ select:focus {
 .response-title {
     margin-bottom: 0.5rem;
     font-weight: 600;
+    color: #000000;
 }
 
 .response-text {
     white-space: pre-wrap;
-    color: #333;
+    color: #000000;
 }

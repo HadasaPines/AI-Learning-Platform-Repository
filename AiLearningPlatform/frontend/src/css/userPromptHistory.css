@@ -19,21 +19,24 @@
     border: 1px solid #e2e8f0;
     border-radius: 8px;
     padding: 1rem;
-    background-color: #f9fafb;
+    background: linear-gradient(135deg, #e5dbff, #f8f4ff);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   }
   
   .prompt-history-item + .prompt-history-item {
     margin-top: 1rem;
+
   }
   
   .prompt-history-item strong {
     color: #1a202c;
+
   }
   
   .prompt-history-item em {
     color: #000000;
     font-style: italic;
+
   }
   
   .prompt-history-item .date {
@@ -53,5 +56,6 @@
 
 .prompt-history-item * {
   color: #000000 !important; 
+
 }
   

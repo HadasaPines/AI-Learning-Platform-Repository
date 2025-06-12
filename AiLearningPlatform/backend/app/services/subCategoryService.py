@@ -1,13 +1,16 @@
 
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
-from app.models.subCategory import SubCategory
+from app.models import SubCategory, Category
 from app.schemas.subCategorySchema import SubCategoryCreate, SubCategoryUpdate
 
 def create_sub_category(db: Session, sub_category: SubCategoryCreate):
     existing_sub_category = db.query(SubCategory).filter(SubCategory.name == sub_category.name).first()
     if existing_sub_category:
-        raise HTTPException(status_code=400, detail="Sub-category already exists")
+        raise HTTPException(status_code=409, detail="Sub-category already exists")
+    category = db.query(Category).filter(Category.id == sub_category.category_id).first()
+    if not category:
+        raise HTTPException(status_code=404, detail="Category not found")
     
     db_sub_category = SubCategory(name=sub_category.name, category_id=sub_category.category_id)
     db.add(db_sub_category)

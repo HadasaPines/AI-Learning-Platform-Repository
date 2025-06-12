@@ -6,7 +6,7 @@ from app.schemas.categorySchema import CategoryCreate, CategoryUpdate
 def create_category(db: Session, category: CategoryCreate):
     existing_category = db.query(Category).filter(Category.name == category.name).first()
     if existing_category:
-        raise HTTPException(status_code=400, detail="Category already exists")
+        raise HTTPException(status_code=409, detail="Category already exists")
     
     db_category = Category(name=category.name)
     db.add(db_category)

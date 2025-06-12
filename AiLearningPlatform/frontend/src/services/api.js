@@ -1,6 +1,6 @@
-// src/api/index.js
-
 import axios from "axios";
+import handleApiError from "./exceptions";
+
 
 const API = axios.create({
   baseURL: "http://localhost:8000", // או לקרוא מ־.env
@@ -9,29 +9,50 @@ const API = axios.create({
   },
 });
 
-// Register & Login
-export const register = (data) => API.post("/users/", data);
+export const register = async (data) => {
+  try {
+    const response = await  API.post("/users/", data);
+    return response.data;
+
+  } catch (error) {
+     handleApiError(error);   }
+}
+
+
 export const loginUser = async (name, phone) => {
   try {
     const response = await API.post("/users/login", { name, phone });
     return response.data;
   } catch (error) {
-    throw new Error("Login failed");
+    handleApiError(error);
   }
 };
 
-export const getCategories = () => API.get("/categories/");
-export const getSubCategories = (categoryId) =>
-  API.get(`subcategories/category/${categoryId}`);
+export const getCategories = () =>{
+try{
+ return API.get("/categories/");
+}
+catch(error){
+  handleApiError(error);
+}
+};
+export const getSubCategories = (categoryId) =>{
+  try{
+    return API.get(`/subcategories/category/${categoryId}`);
+  }
+  catch(error){
+    handleApiError(error);
+  }
+}
 
 export const submitPrompt = async (data) => {
   try {
     const response = await API.post("/prompts/", data);
     return response.data;
   } catch (error) {
-    console.error("Failed to submit prompt", error);
-    throw error;
+    handleApiError(error);
   }
+  
 };
 
 export const getUserPrompts = async (userId) => {
@@ -39,9 +60,23 @@ export const getUserPrompts = async (userId) => {
     const response = await API.get(`/prompts/user/${userId}`);
     return response.data;
   } catch (error) {
-    console.error("Failed to fetch prompts", error);
-    throw error;
+    handleApiError(error);
   }
 };
-export const getAllUsers = () => API.get("/admin/users");
-export const getAllPrompts = () => API.get("/admin/prompts");
+
+export const getAllUsers = () =>{
+  try{ 
+    return API.get("/admin/users");
+  } catch(error){
+    handleApiError(error);
+  }
+};
+
+export const getAllPrompts = () =>{
+  try{
+return API.get("/admin/prompts");
+  }
+  catch(error){
+    handleApiError(error);
+  }
+};
