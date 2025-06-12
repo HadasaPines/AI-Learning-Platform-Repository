@@ -4,6 +4,7 @@ from app.db.database import SessionLocal
 from app.services import adminService as service
 from app.schemas import userSchema, promptSchema
 
+
 router = APIRouter(prefix="/admin", tags=["admin"])
 
 def get_db():

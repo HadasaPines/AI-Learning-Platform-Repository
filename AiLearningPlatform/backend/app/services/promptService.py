@@ -3,8 +3,12 @@ from sqlalchemy.orm import Session
 from fastapi import HTTPException
 from app.models.prompt import Prompt
 from app.schemas.promptSchema import PromptCreate, PromptUpdate
+from app.services.openaiService import ask_gpt
+import asyncio
 
-def create_prompt(db: Session, prompt: PromptCreate, ai_response: str=""):
+async def create_prompt(db: Session, prompt: PromptCreate, ai_response: str = ""):
+    ai_response = await ask_gpt(prompt.prompt)
+
     db_prompt = Prompt(
         user_id=prompt.user_id,
         category_id=prompt.category_id,
@@ -16,6 +20,7 @@ def create_prompt(db: Session, prompt: PromptCreate, ai_response: str=""):
     db.commit()
     db.refresh(db_prompt)
     return db_prompt
+
 
 def get_prompt(db: Session, prompt_id: int):
     db_prompt = db.query(Prompt).filter(Prompt.id == prompt_id).first()

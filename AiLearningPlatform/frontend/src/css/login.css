@@ -1,24 +1,4 @@
 
-body, html {
-    height: 100%;
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-    /* רקע בגווני סגול עם מעבר עדין */
-    background: linear-gradient(135deg, #6a11cb 0%, #8e54e9 40%, #a066e0 70%, #b185f5 100%);
-    background-attachment: fixed;
-    background-size: cover;
-
-    /* פריסה מרכזית */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    /* אפקט טשטוש עם צבע אחורי */
-    position: relative;
-    overflow: hidden;
-  }
-  
   .login-container {
     background: white;
     padding: 2.5rem 3rem;
@@ -61,7 +41,7 @@ body, html {
   }
   
   .login-container button {
-    width: 108%;       
+    width: 100%;       
     padding: 0.7rem;
     margin-top: 1.2rem;   
     background: #6a11cb;
@@ -84,4 +64,6 @@ body, html {
     color: #d32f2f;
     font-weight: 600;
   }
-  
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }

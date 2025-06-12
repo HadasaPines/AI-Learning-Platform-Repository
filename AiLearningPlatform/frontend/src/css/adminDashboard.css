@@ -1,0 +1,95 @@
+.dashboard-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 3rem;
+    background: linear-gradient(to bottom right, #e5e3e8, #fcfbff);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+
+  h1, h2 {
+    color:  #6a11cb;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  h1 {
+    font-size: 2.2rem;
+  }
+  
+  h2 {
+    font-size: 1.6rem;
+  }
+  
+
+  button {
+    background-color: #ffffff;
+    color: #6a11cb;
+    font-weight: bold;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    margin: 1rem 0;
+  }
+  
+  button:hover {
+    background-color: #f0e9ff;
+    color: #4a2a8c;
+  }
+  
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #6a11cb(204, 20, 20, 0.1);
+    backdrop-filter: blur(3px);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 2rem;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(106, 17, 203, 0.05); 
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  table thead {
+    background-color: rgba(106, 17, 203, 0.15);
+  }
+  
+  table th, table td {
+    padding: 1rem;
+    border: 1px solid rgba(106, 17, 203, 0.2);
+    text-align: left;
+    color: #4a2a8c; 
+  }
+  
+  table tr:nth-child(even) {
+    background-color: rgba(106, 17, 203, 0.05);
+  }
+  
+  table tr:hover {
+    background-color: rgba(106, 17, 203, 0.12);
+  }
+  
+
+  @media (max-width: 768px) {
+    .dashboard-container {
+      padding: 1.5rem;
+    }
+  
+    table th, table td {
+      padding: 0.7rem;
+      font-size: 0.95rem;
+    }
+  }
+  

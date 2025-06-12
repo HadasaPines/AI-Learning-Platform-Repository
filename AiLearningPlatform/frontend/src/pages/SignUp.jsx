@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import  UserContext  from "../contexts/UserContext";
-import InputField from "../components/InputField";
+import UserContext from "../contexts/UserContext";
 import { register } from "../services/api";
 
 const SignUp = () => {
@@ -16,25 +15,53 @@ const SignUp = () => {
     setError("");
 
     try {
-      const response = await register({ name, phone }); // ← שימוש בפונקציה שלך
-      login(response.data); // שמירת המשתמש בקונטקסט ובלוקאל סטורג'
+      const response = await register({ name, phone });
+      login(response.data);
       navigate("/dashboard");
     } catch (err) {
-      setError(err.response?.data?.detail || "שגיאה בהרשמה");
+      setError(err.response?.data?.detail || "Registration failed");
     }
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 border rounded shadow">
-      <h2 className="text-2xl font-bold mb-4">הרשמה</h2>
-      <form onSubmit={handleSubmit}>
-        <InputField label="שם" value={name} onChange={(e) => setName(e.target.value)} />
-        <InputField label="טלפון" value={phone} onChange={(e) => setPhone(e.target.value)} />
-        {error && <div className="text-red-600 mb-2">{error}</div>}
-        <button type="submit" className="bg-blue-600 text-white py-2 px-4 rounded">
-          הירשם
-        </button>
-      </form>
+    <div style={{
+      height: "100vh",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      background: "linear-gradient(135deg, #6a11cb 0%, #8e54e9 40%, #a066e0 70%, #b185f5 100%)",
+      backgroundAttachment: "fixed",
+      backgroundSize: "cover",
+      fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+      margin: 0,
+    }}>
+      <div className="login-container">
+        <h2>Sign Up</h2>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="phone">Phone</label>
+            <input
+              type="text"
+              id="phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              required
+            />
+          </div>
+          {error && <p>{error}</p>}
+          <button type="submit">Register</button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import UserContext from "../contexts/userContext";
+import UserContext from "../contexts/UserContext";
 import "../css/login.css";
 const LoginPage = () => {
   const [name, setName] = useState("");
@@ -17,7 +17,6 @@ const LoginPage = () => {
       const result = await loginWithApi(name, phone);
 
       if (result.success) {
-        // ניתוב לפי סוג המשתמש
         if (name.toLowerCase() === "admin") {
           navigate("/admin");
         } else {
@@ -34,8 +33,7 @@ const LoginPage = () => {
 
   return (
     <div className="login-page">
-      <img src="/images/ai-learning-logo.png" alt="AI Learning Logo" className="logo" />
-
+      <div className="login-background">
       <div className="login-header">
         <h1>Welcome To AI Learning Platform</h1>
         <p>Login to continue</p>
@@ -65,6 +63,7 @@ const LoginPage = () => {
           {error && <p style={{ color: "red" }}>{error}</p>}
         </form>
       </div>
+    </div>
     </div>
 
 
