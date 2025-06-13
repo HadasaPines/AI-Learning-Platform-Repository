@@ -15,7 +15,8 @@ const LoginPage = () => {
   
     try {
       const result = await loginWithApi(name, phone);
-  
+      console.log("Login result:", result);
+
       if (result.success) {
         if (name.toLowerCase() === "admin") {
           navigate("/admin");

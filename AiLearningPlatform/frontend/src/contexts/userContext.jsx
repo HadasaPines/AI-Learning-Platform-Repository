@@ -23,7 +23,7 @@ export const UserProvider = ({ children }) => {
     login(userData);
     return { success: true };
   } catch (error) {
-    if (error.message.includes("לא נמצא")) {
+    if (error.message.includes("Not found")) {
       return { success: false, reason: "not_found" };
     }
     throw error;

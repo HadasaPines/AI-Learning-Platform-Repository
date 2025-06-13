@@ -10,9 +10,9 @@ const handleApiError = (error) => {
   case 400:
   throw new Error("Invalid input");
   case 404:
-  throw new Error("Not found: " + detail);
+  throw new Error("Not found");
   case 409:
-  throw new Error("Already exists: " + detail);
+  throw new Error("Already exists: ");
   case 422:
   throw new Error("Invalid input");
   case 500:
