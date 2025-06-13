@@ -1,4 +1,4 @@
-# 🎓 AI-Guided Learning Platform
+# 🎓 AI Learning Platform
 
 This project is a **Mini MVP** of an AI-based learning platform built with:
 
@@ -27,7 +27,7 @@ Admins can view activity and manage content via a dashboard.
 - **Database:** PostgreSQL with SQLAlchemy ORM
 - **Frontend:** React.js
 - **AI Service:** OpenAI GPT
-- **Containerization:** Docker & Docker Compose
+- **Containerization:**  Docker Compose
 
 ---
 
