@@ -16,7 +16,7 @@ const SignUp = () => {
 
     try {
       const response = await register({ name, phone });
-      login(response.data);
+      login(response);
       navigate("/dashboard");
     } catch (err) {
       setError(err.message || "Registration failed");

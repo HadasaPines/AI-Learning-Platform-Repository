@@ -1,24 +1,24 @@
 const handleApiError = (error) => {
-    if (!error.response) {
-      throw new Error("אין חיבור לשרת");
-    }
+  if (!error.response) {
+  throw new Error("No connection to server");
+  }
   
-    const status = error.response.status;
-    const detail = error.response.data?.detail || "שגיאה לא ידועה";
+  const status = error.response.status;
+  const detail = error.response.data?.detail || "Unknown error";
   
-    switch (status) {
-      case 400:
-        throw new Error("Invalid input");
-      case 404:
-        throw new Error("לא נמצא: " + detail);
-      case 409:
-        throw new Error("קיים כבר: " + detail);
-      case 422:
-        throw new Error("Invalid input");
-      case 500:
-        throw new Error("שגיאה פנימית בשרת");
-      default:
-        throw new Error(detail);
-    }
+  switch (status) {
+  case 400:
+  throw new Error("Invalid input");
+  case 404:
+  throw new Error("Not found: " + detail);
+  case 409:
+  throw new Error("Already exists: " + detail);
+  case 422:
+  throw new Error("Invalid input");
+  case 500:
+  throw new Error("Internal server error");
+  default:
+  throw new Error(detail);
+  }
   };
   export default handleApiError;

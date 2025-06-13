@@ -7,6 +7,7 @@ export default function AdminDashboard() {
   const [prompts, setPrompts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showPrompts, setShowPrompts] = useState(true);
+  const [showUsers, setShowUsers] = useState(true); // הוספתי את זה
 
   useEffect(() => {
     async function fetchData() {
@@ -47,80 +48,78 @@ export default function AdminDashboard() {
   }
 
   return (
-    
-      <div className="dashboard-container">
-        <h1>Admin Dashboard</h1>
+    <div className="dashboard-container">
+      <h1>Admin Dashboard</h1>
 
-        {/* Users Section */}
-        <section>
-          <div className="section-header">
-            <h2>Users ({users.length})</h2>
-            <button onClick={() => setShowUsers(!showUsers)}>
-              {showUsers ? "Hide" : "Show"}
-            </button>
-          </div>
-          {showUsers && (
-            <div className="table-wrapper">
-              <table>
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Phone</th>
+      {/* Users Section */}
+      <section>
+        <div className="section-header">
+          <h2>Users ({users.length})</h2>
+          <button onClick={() => setShowUsers(!showUsers)}>
+            {showUsers ? "Hide" : "Show"}
+          </button>
+        </div>
+        {showUsers && (
+          <div className="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Phone</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.map((user) => (
+                  <tr key={user.id}>
+                    <td>{user.id}</td>
+                    <td>{user.name}</td>
+                    <td>{user.phone}</td>
                   </tr>
-                </thead>
-                <tbody>
-                  {users.map((user) => (
-                    <tr key={user.id}>
-                      <td>{user.id}</td>
-                      <td>{user.name}</td>
-                      <td>{user.phone}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-        </section>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </section>
 
-        {/* Prompts Section */}
-        <section>
-          <div className="section-header">
-            <h2>Prompts ({prompts.length})</h2>
-            <button onClick={() => setShowPrompts(!showPrompts)}>
-              {showPrompts ? "Hide" : "Show"}
-            </button>
-          </div>
-          {showPrompts && (
-            <div className="table-wrapper">
-              <table>
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>User ID</th>
-                    <th>Prompt</th>
-                    <th>Response</th>
-                    <th>Category</th>
-                    <th>Subcategory</th>
+      {/* Prompts Section */}
+      <section>
+        <div className="section-header">
+          <h2>Prompts ({prompts.length})</h2>
+          <button onClick={() => setShowPrompts(!showPrompts)}>
+            {showPrompts ? "Hide" : "Show"}
+          </button>
+        </div>
+        {showPrompts && (
+          <div className="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>User ID</th>
+                  <th>Prompt</th>
+                  <th>Response</th>
+                  <th>Category</th>
+                  <th>Subcategory</th>
+                </tr>
+              </thead>
+              <tbody>
+                {prompts.map((p) => (
+                  <tr key={p.id}>
+                    <td>{p.id}</td>
+                    <td>{p.user_id}</td>
+                    <td className="truncate">{p.prompt}</td>
+                    <td className="truncate">{p.response}</td>
+                    <td>{p.category?.name || "-"}</td>
+                    <td>{p.sub_category?.name || "-"}</td>
                   </tr>
-                </thead>
-                <tbody>
-                  {prompts.map((p) => (
-                    <tr key={p.id}>
-                      <td>{p.id}</td>
-                      <td>{p.user_id}</td>
-                      <td className="truncate">{p.prompt}</td>
-                      <td className="truncate">{p.response}</td>
-                      <td>{p.category?.name || "-"}</td>
-                      <td>{p.sub_category?.name || "-"}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-        </section>
-      </div>
-    
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </section>
+    </div>
   );
 }
