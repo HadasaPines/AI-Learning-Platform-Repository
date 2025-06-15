@@ -80,3 +80,84 @@ return API.get("/admin/prompts");
     handleApiError(error);
   }
 };
+
+export const updateUser = async (id, data) => {
+  try {
+    const response = await API.put(`/users/${id}`, data);
+    return response.data;
+  } catch (error) {
+    handleApiError(error);
+  }
+};
+
+export const deleteUser = async (id) => {
+  try {
+    const response = await API.delete(`/users/${id}`);
+    return response.data;
+  } catch (error) {
+    throw error.response?.data?.detail || "Unexpected error during deletion";
+  }
+};
+export const createCategory = async (data) => {
+  try {
+    const response = await API.post("/categories/", data);
+    return response.data;
+  } catch (error) {
+    handleApiError(error);
+  }
+};
+
+export const createSubCategory = async (data) => {
+  try {
+    const response = await API.post("/subcategories/", data);
+    return response.data;
+  } catch (error) {
+    handleApiError(error);
+  }
+};
+export const deleteSubCategory = async (id) => {
+  try {
+    const response = await API.delete(`/subcategories/${id}`);
+    return response.data;
+  } catch (error) {
+    handleApiError(error);
+  }
+};
+export const updateSubCategory = async (id, data) => {
+  try {
+    const response = await API.put(`/subcategories/${id}`, data);
+    return response.data;
+  } catch (error) {
+    handleApiError(error);
+  }
+};
+export const deleteCategory = async (id) => {
+  try {
+    const response = await API.delete(`/categories/${id}`);
+    return response.data;
+  } catch (error) {
+    handleApiError(error);
+  }
+};
+export const updateCategory = async (id, data) => {
+  try {
+    const response = await API.put(`/categories/${id}`, data);
+    return response.data;
+  } catch (error) {
+    handleApiError(error);
+  }
+};
+export const deletePrompt = async (id) => {
+  try {
+    const response = await API.delete(`/prompts/${id}`);
+    return response.data;
+  } catch (error) {
+    handleApiError(error);
+  }
+};
+
+
+
+
+
+

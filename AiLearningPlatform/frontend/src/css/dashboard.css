@@ -1,10 +1,13 @@
 .dashboard-container {
-  background: linear-gradient(135deg, #e5dbff, #f8f4ff) !important;
+  background: linear-gradient(135deg, #c0a7ff, #f8f4ff) !important;
   padding: 2rem 6rem !important;
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   max-width: 500px;
   margin: 5rem auto;
+  position: relative;
+
+
 }
 
 .dashboard-title {
@@ -17,7 +20,7 @@
 
 .history-toggle-button {
   padding: 0.8rem 1.5rem;
-  background: linear-gradient(135deg, #e5dbff, #f8f4ff);
+  background: linear-gradient(135deg, #c0a7ff, #f8f4ff);
   font-weight: bold;
   font-size: 1.1rem;
   border: none;
@@ -54,4 +57,27 @@
 
 .space-y-8 > * + * {
   margin-top: 0.1rem;
+}
+
+
+.logout-button:hover {
+  background-color: #7e22ce;
+}
+
+
+.logout-wrapper {
+  position: absolute;
+  top: 20px;
+  right: 0px !important; 
+  z-index: 1000;
+}
+
+.logout-button {
+  padding: 8px 16px;
+  background-color: #9333ea;
+  color: #4a2a8c;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
 }
